@@ -1,5 +1,8 @@
 import { Client, IntentsBitField, Message } from "discord.js";
 
+import { config } from "dotenv";
+config();
+
 const F = IntentsBitField.Flags;
 
 const client = new Client({
