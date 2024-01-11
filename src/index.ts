@@ -6,7 +6,7 @@ config();
 const F = IntentsBitField.Flags;
 
 const client = new Client({
-    intents: [F.Guilds, F.GuildMessages, F.MessageContent]
+    intents: [F.Guilds, F.GuildMessages, F.GuildMembers]
 })
 
 client.on("ready", () => {
@@ -23,6 +23,11 @@ const PET_ROLE_ID = process.env._PET_ROLE_ID || "1179673468556541962"; // replac
 
 client.on('messageCreate', async (msg: Message) => {
     try{
+
+        if(!msg.member) return;
+
+        if(msg.member?.permissions.has('ModerateMembers')) return;
+
         if (msg.channel.id === INTRO_CHANNEL_ID) {
             if (timers.has(msg.author.id)) {
                 // prevent message from being sent
