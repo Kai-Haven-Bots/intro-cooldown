@@ -36,6 +36,7 @@ client.on('messageCreate', async (msg: Message) => {
             } else {
                 // update the timer for the user
                 timers.set(msg.author.id, Date.now());
+                msg.react('<a:kai_hi:993061354367897621>').catch(err => {});
             }
         } else if (msg.channelId === PET_CHANNEL_ID){
             try{
