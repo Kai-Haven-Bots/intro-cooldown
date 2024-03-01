@@ -25,8 +25,8 @@ client.on('messageCreate', async (msg: Message) => {
     try{
 
         if(!msg.member) return;
-
         if(msg.member?.permissions.has('ModerateMembers')) return;
+        if(msg.author.id === "1187033085808754802") return;
 
         if (msg.channel.id === INTRO_CHANNEL_ID) {
             if (timers.has(msg.author.id)) {
